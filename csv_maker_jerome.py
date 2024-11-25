@@ -3,9 +3,14 @@ import numpy as np
 import os
 """
 To make it work, call the function with the parameter in the order : 
-def generate_data_CDF(Sref_mean, Stest_std,
-                      number_repetition_per_trial=10, step_change_Stest=0.25,
-                      Stest_range_min=-4, Stest_range_max=4, std_Sref=0)
+def generate_data_CDF(Stest_std=0,
+                      Stest_range_min=-4, 
+                      Stest_range_max=4,
+                      Sref_mean=0,
+                      Sref_std=0,
+                      number_repetition_per_trial=50, 
+                      step_change_Stest=0.25,
+                      )
 """
 def generate_dataframe():
     columns = ['Trial',
@@ -46,9 +51,14 @@ def trial_maker(number_repetition_per_trial,
     return df
 
 
-def generate_data_CDF(Sref_mean, Stest_std,
-                      number_repetition_per_trial=50, step_change_Stest=0.25,
-                      Stest_range_min=-4, Stest_range_max=4, std_Sref=0):
+def generate_data_CDF(Stest_std=0,
+                      Stest_range_min=-4, 
+                      Stest_range_max=4,
+                      Sref_mean=0,
+                      Sref_std=0,
+                      number_repetition_per_trial=50, 
+                      step_change_Stest=0.25,
+                      ):
     '''
     Function that call the constructor of dataframe to create a csv.
     changing its parameter by default changes the parameter of simulations
@@ -60,7 +70,7 @@ def generate_data_CDF(Sref_mean, Stest_std,
         Stest_range_min=Stest_range_min,
         Stest_range_max=Stest_range_max,
         std_Stest=Stest_std,
-        std_Sref=std_Sref
+        std_Sref=Sref_std
     )
     # Vérifiez ou créez le dossier "experiment_1_data_cdf"
     folder_name = "experiment_1_data_cdf"
@@ -68,11 +78,9 @@ def generate_data_CDF(Sref_mean, Stest_std,
         os.makedirs(folder_name)
     
     # Définissez le chemin complet du fichier
-    file_name = f"data-cdf_{Stest_range_min}-{Stest_range_max}_{Stest_std}_{Sref_mean}_{std_Sref}.csv"
+    file_name = f"data-cdf_{Stest_range_min}-{Stest_range_max}_{Stest_std}_{Sref_mean}_{Sref_std}.csv"
     file_path = os.path.join(folder_name, file_name)
     
     # Sauvegardez le DataFrame dans le fichier CSV
     df.to_csv(file_path, index=False)
     print(f"DataFrame sauvegardé dans : {file_path}")
-
-    
