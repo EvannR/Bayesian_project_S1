@@ -47,7 +47,7 @@ def trial_maker(number_repetition_per_trial,
 
 
 def generate_data_CDF(Sref_mean, Stest_std,
-                      number_repetition_per_trial=10, step_change_Stest=0.25,
+                      number_repetition_per_trial=50, step_change_Stest=0.25,
                       Stest_range_min=-4, Stest_range_max=4, std_Sref=0):
     '''
     Function that call the constructor of dataframe to create a csv.
@@ -74,3 +74,5 @@ def generate_data_CDF(Sref_mean, Stest_std,
     # Sauvegardez le DataFrame dans le fichier CSV
     df.to_csv(file_path, index=False)
     print(f"DataFrame sauvegardé dans : {file_path}")
+
+    
