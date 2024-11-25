@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+import os
 
 def generate_dataframe():
     columns = ['Trial',
@@ -57,10 +57,15 @@ def generate_data_CDF(Sref_mean, Stest_std,
         std_Stest=Stest_std,
         std_Sref=std_Sref
     )
-
-    file_name = f"data_cdf_{Sref_mean}_{Stest_std}.csv"
-    df.to_csv(file_name, index=False)
-    print(f"DataFrame sauvegardé dans {file_name}")
-
-
-generate_data_CDF(0, 2)
+    # Vérifiez ou créez le dossier "experiment_1_data_cdf"
+    folder_name = "experiment_1_data_cdf"
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)
+    
+    # Définissez le chemin complet du fichier
+    file_name = f"data-cdf_{Stest_range_min}-{Stest_range_max}_{Stest_std}_{Sref_mean}_{std_Sref}.csv"
+    file_path = os.path.join(folder_name, file_name)
+    
+    # Sauvegardez le DataFrame dans le fichier CSV
+    df.to_csv(file_path, index=False)
+    print(f"DataFrame sauvegardé dans : {file_path}")
