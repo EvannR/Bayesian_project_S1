@@ -12,6 +12,7 @@ def generate_data_CDF(Stest_std=0,
                       step_change_Stest=0.25,
                       )
 """
+
 def generate_dataframe():
     columns = ['Trial',
                'Stimulus 1 Value',
