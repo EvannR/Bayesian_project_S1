@@ -1,7 +1,12 @@
 import pandas as pd
 import numpy as np
 import os
-
+"""
+To make it work, call the function with the parameter in the order : 
+def generate_data_CDF(Sref_mean, Stest_std,
+                      number_repetition_per_trial=10, step_change_Stest=0.25,
+                      Stest_range_min=-4, Stest_range_max=4, std_Sref=0)
+"""
 def generate_dataframe():
     columns = ['Trial',
                'Stimulus 1 Value',
